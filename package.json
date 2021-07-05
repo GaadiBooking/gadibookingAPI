@@ -1,0 +1,23 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "gadi booking api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sam33na/gadibookingAPI.git"
+  },
+  "author": "Samina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sam33na/gadibookingAPI/issues"
+  },
+  "homepage": "https://github.com/sam33na/gadibookingAPI#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
