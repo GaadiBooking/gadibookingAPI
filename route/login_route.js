@@ -44,7 +44,12 @@ router.post('/user/login', function (req, res) {
             if (result === false) {
                 return res.status(201).json({ msg: "Invalid credentials" })
             }
-           
+            const token = jwt.sign({ custId: savedData._id }, 'anysecretkey');
+            return res.status(200).json({ success: true, 
+                msg: "successfull authentication", 
+                token: token, 
+                role: savedData.role,
+                data: savedData._id })
         })
     })
         .catch(function (e) {
