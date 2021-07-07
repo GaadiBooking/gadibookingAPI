@@ -40,7 +40,12 @@ router.post('/user/login', function (req, res) {
         if (savedData === null) {
             return res.status(201).json({ success: false, message: "Invalid Details" }) 
         }
-      
+        bcryptjs.compare(password, savedData.password, function (err, result) {
+            if (result === false) {
+                return res.status(201).json({ msg: "Invalid credentials" })
+            }
+           
+        })
     })
         .catch(function (e) {
             res.status(500).json({ message: e })
