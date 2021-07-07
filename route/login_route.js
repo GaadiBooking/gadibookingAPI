@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Reg = require('../model/register_model');
+const Register = require('../model/register_model');
 const { check, validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
-//const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 
 //register user
 router.post('/user/register',  function (req, res) {
@@ -31,11 +31,16 @@ router.post('/user/register',  function (req, res) {
         res.status(201).json(errors.array());
     }
 })
+
+//login
 router.post('/user/login', function (req, res) {
     const user = req.body.username;
     const password = req.body.password;
-    Reg.findOne({ username: user }).then(function (dataSave) {
-     
+    Register.findOne({ username: user }).then(function (savedData) {
+        if (savedData === null) {
+            return res.status(201).json({ success: false, message: "Invalid Details" }) 
+        }
+      
     })
         .catch(function (e) {
             res.status(500).json({ message: e })
