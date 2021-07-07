@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Register = require('../model/login_model');
+const Register = require('../model/register_model');
 const { check, validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken')
@@ -32,4 +32,8 @@ router.post('/user/register',  function (req, res) {
     }
 })
 
+//login 
+router.post('/user/login', function (req, res) {
+  
+})
 module.exports = router;
