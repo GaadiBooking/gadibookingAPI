@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken')
 router.post('/user/register',  function (req, res) {
     const errors = validationResult(req);
     if (errors.isEmpty()) {
-        //valid
+        //validation purpose
         const name = req.body.name;
         const email = req.body.email;
         const username = req.body.username;
@@ -37,6 +37,7 @@ router.post('/user/login', function (req, res) {
     const user = req.body.username;
     const password = req.body.password;
     Register.findOne({ username: user }).then(function (savedData) {
+        //check for both username and password
         if (savedData === null) {
             return res.status(201).json({ success: false, message: "Invalid Details" }) 
         }
