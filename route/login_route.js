@@ -37,5 +37,8 @@ router.post('/user/login', function (req, res) {
     Reg.findOne({ username: user }).then(function (dataSave) {
      
     })
+        .catch(function (e) {
+            res.status(500).json({ message: e })
+        })
 })
 module.exports = router;
