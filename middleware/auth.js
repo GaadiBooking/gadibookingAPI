@@ -29,6 +29,14 @@ module.exports.verifyUser=function(req,res,next)
 //admin auth for ticket udpates/addition/deletion
 module.exports.verifyUsAd=function(req, res, next)
 {
-   
+    if(!req.validUser)
+    {
+        return res.status(401).json({msg: "Unauthorized"})
+    }
+    else if(req.validUser.role!=="Admin")
+    {
+        return res.status(401).json({msg: "Unauthorized"})
+    }
+    next();
 }
 
