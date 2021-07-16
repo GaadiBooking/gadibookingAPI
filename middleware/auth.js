@@ -26,4 +26,9 @@ module.exports.verifyUser=function(req,res,next)
     }
 }
 
+//admin auth for ticket udpates/addition/deletion
+module.exports.verifyUsAd=function(req, res, next)
+{
+   
+}
 
