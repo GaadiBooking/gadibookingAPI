@@ -3,7 +3,7 @@ const Detail=require('../model/register_model');
 const router = require('../route/login_route');
 
 
-module.exports.verifyUser=function(req,res,next)
+module.exports.userVerify=function(req,res,next)
 {
    //main guard checks whether user has token or not
     console.log(req.headers.authorization)
@@ -27,11 +27,11 @@ module.exports.verifyUser=function(req,res,next)
 }
 
 //admin auth for ticket udpates/addition/deletion
-module.exports.verifyUsAd=function(req, res, next)
+module.exports.verifyAdmin=function(req, res, next)
 {
     if(!req.validUser)
     {
-        return res.status(401).json({msg: "Unauthorized"})
+        return res.status(401).json({msg: "eta prb"})
     }
     else if(req.validUser.role!=="Admin")
     {
