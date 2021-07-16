@@ -37,7 +37,7 @@ router.delete('/deleteticket/:id', function(req, res){
     })
     .catch(function(err)
     {
-        
+        res.status(500).json({error:err})
     })
     })
 module.exports = router;
