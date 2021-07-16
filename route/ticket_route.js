@@ -16,7 +16,8 @@ router.post('/add/ticket',  function (req, res) {
         const departuretime = req.body.departuretime;
         const arrivaltime=req.body.arrivaltime;
         const phone = req.body.phone;
-            const store = new Ticket({ departure: departure,arrival:arrival, driver: driver, price: price, seat: seat, date: date, departuretime: departuretime,arrivaltime:arrivaltime, phone: phone});
+        const busno=req.body.busno
+            const store = new Ticket({ departure: departure,arrival:arrival, driver: driver, price: price, seat: seat, date: date, departuretime: departuretime,arrivaltime:arrivaltime, phone: phone,busno:busno});
             console.log(driver);
             store.save().then(function (result) {
                 res.status(200).json({ success: true, message: "Ticket Scheduled Successfully" }) 
@@ -43,8 +44,9 @@ router.put('/update/ticket', function(req, res) {
         const departuretime = req.body.departuretime;
         const arrivaltime=req.body.arrivaltime;
         const phone = req.body.phone;
+        const busno=req.body.busno
         const id = req.body.id;
-    Ticket.updateOne({ _id: id }, { departure: departure,arrival:arrival, driver: driver, price: price, seat: seat, date: date, departuretime: departuretime,arrivaltime:arrivaltime, phone: phone })
+    Ticket.updateOne({ _id: id }, { departure: departure,arrival:arrival, driver: driver, price: price, seat: seat, date: date, departuretime: departuretime,arrivaltime:arrivaltime, phone: phone,busno:busno })
         .then(function(re) {
             console.log(re)
             res.status(200).json({ message: "updated" })
