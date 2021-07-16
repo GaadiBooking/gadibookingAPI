@@ -10,7 +10,7 @@ module.exports.userVerify=function(req,res,next)
     try{
         const token=req.headers.authorization.split(" ")[1]
         const data=jwt.verify(token, 'anysecretkey');
-        Detail.findOne({_id:data.userId}).then(function(userData)
+        Detail.findOne({_id:data.custId}).then(function(userData)
         {
             req.validUser=userData;
             console.log(userData) 
