@@ -56,7 +56,7 @@ router.put('/update/ticket', function(req, res) {
    
 })
 
-
+//delete ticket
 router.delete('/delete/ticket/:id', function(req, res){
     const id = req.params.id;
     Ticket.deleteOne({_id:id}).then(function(ticketdel)
