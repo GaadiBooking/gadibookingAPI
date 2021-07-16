@@ -8,7 +8,7 @@ router.post('/add/ticket',  function (req, res) {
     const errors = validationResult(req);
     if (errors.isEmpty()) {
         const location = req.body.location;
-        const driver = req.body.driver;
+        const driver = req.body.driver; 
         const price = req.body.price;
         const seat = req.body.seat;
         const date = req.body.date;
@@ -27,4 +27,9 @@ router.post('/add/ticket',  function (req, res) {
     }
 })
 
+
+
+router.delete('/deleteticket/:id', function(req, res){
+    
+    })
 module.exports = router;
