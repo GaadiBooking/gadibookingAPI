@@ -10,8 +10,6 @@ router.post('/add/ticket',  function (req, res) {
         const departure = req.body.departure;
         const arrival = req.body.arrival;
         const driver = req.body.driver;
-        const location = req.body.location;
-        const driver = req.body.driver; 
         const price = req.body.price;
         const seat = req.body.seat;
         const date = req.body.date;
@@ -20,7 +18,6 @@ router.post('/add/ticket',  function (req, res) {
         const phone = req.body.phone;
         const busno=req.body.busno
             const store = new Ticket({ departure: departure,arrival:arrival, driver: driver, price: price, seat: seat, date: date, departuretime: departuretime,arrivaltime:arrivaltime, phone: phone,busno:busno});
-            console.log(driver);
             store.save().then(function (result) {
                 res.status(200).json({ success: true, message: "Ticket Scheduled Successfully" }) 
             }).catch(function (error) {
@@ -60,15 +57,16 @@ router.put('/update/ticket', function(req, res) {
 })
 
 
-router.delete('/deleteticket/:id', function(req, res){
+router.delete('/delete/ticket/:id', function(req, res){
     const id = req.params.id;
-    Ticket.deleteOne({_id:id}).then(function(req,res)
+    Ticket.deleteOne({_id:id}).then(function(ticketdel)
     {
         res.status(200).json({message:"Ticket Deleted"})
     })
     .catch(function(err)
     {
-        res.status(500).json({error:err})
+        res.status(500).json({message:"problem"})
     })
     })
+
 module.exports = router;
