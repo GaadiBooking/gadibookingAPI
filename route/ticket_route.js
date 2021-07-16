@@ -10,6 +10,8 @@ router.post('/add/ticket',  function (req, res) {
         const departure = req.body.departure;
         const arrival = req.body.arrival;
         const driver = req.body.driver;
+        const location = req.body.location;
+        const driver = req.body.driver; 
         const price = req.body.price;
         const seat = req.body.seat;
         const date = req.body.date;
@@ -58,6 +60,15 @@ router.put('/update/ticket', function(req, res) {
 })
 
 
-
-
+router.delete('/deleteticket/:id', function(req, res){
+    const id = req.params.id;
+    Ticket.deleteOne({_id:id}).then(function(req,res)
+    {
+        res.status(200).json({message:"Ticket Deleted"})
+    })
+    .catch(function(err)
+    {
+        res.status(500).json({error:err})
+    })
+    })
 module.exports = router;
