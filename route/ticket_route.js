@@ -33,7 +33,7 @@ router.delete('/deleteticket/:id', function(req, res){
     const id = req.params.id;
     Ticket.deleteOne({_id:id}).then(function(req,res)
     {
-
+        res.status(200).json({message:"Ticket Deleted"})
     })
     .catch(function(err)
     {
