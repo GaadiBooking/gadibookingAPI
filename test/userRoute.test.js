@@ -11,6 +11,7 @@ afterAll(async() => {
     await mongoose.connection.close();
 });
 
+
 describe('registering the new user', () => {
     // the code below is for inserting the new customer testing
     it('Insert', () => {
@@ -29,7 +30,8 @@ describe('registering the new user', () => {
             });
     });
 
-});
+
+
 
 
 //--------------------------Login Testing-----------------
@@ -44,3 +46,13 @@ it('Login testing using the resgitered detail', () => {
     });
     });
 
+
+it('finding the user detail',()=>{
+    return user.findById({_id :Object('60f934df23d14f0ff40723df')}).then((pp)=>{
+        expect(pp.name).toEqual('ken')
+        })
+})
+ 
+
+
+});
