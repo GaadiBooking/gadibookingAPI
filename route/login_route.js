@@ -47,7 +47,7 @@ router.post('/user/login', function (req, res) {
             }
             const token = jwt.sign({ custId: savedData._id }, 'anysecretkey');
             return res.status(200).json({ success: true, 
-                msg: "successfull authentication", 
+                message: "successfull authentication", 
                 token: token, 
                 role: savedData.role,
                 data: savedData._id })
@@ -56,5 +56,23 @@ router.post('/user/login', function (req, res) {
         .catch(function (e) {
             res.status(500).json({ message: e })
         })
+})
+
+
+
+
+//getting single user data
+router.get('/user/:id',function(req,res){
+    const userID=req.params.id
+    console.log(userID)
+
+    const user=Register.findById(userID)
+    .then(function(data){
+        res.status(200).json({message:"success",user:data})
+
+    })
+    .catch(function(e){
+        res.status(500).json({error:e})
+    })
 })
 module.exports = router;
