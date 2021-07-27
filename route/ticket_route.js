@@ -104,4 +104,17 @@ router.delete('/delete/ticket/:id',auth.userVerify,auth.verifyAdmin, function(re
     })
     })
 
+  
+//display all tickets
+router.get('/show/tickets', function(req,res)
+{
+    Ticket.find().then(function(data)
+    {
+        
+       
+    })
+    .catch(function(e)
+    {
+    })
+})
 module.exports = router;
