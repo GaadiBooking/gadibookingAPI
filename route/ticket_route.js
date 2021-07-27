@@ -51,9 +51,10 @@ router.put('/update/ticket/:id',auth.userVerify,auth.verifyAdmin, function(req, 
         const phone = req.body.phone;
         const busno=req.body.busno
         const id = req.params.id;
-    Ticket.updateOne({ _id: id }, { departure: departure,arrival:arrival, driver: driver, price: price, seat: seat, date: date, departuretime: departuretime,arrivaltime:arrivaltime, phone: phone,busno:busno })
+        const driver_id=req.body.driver_id
+    Ticket.updateOne({ _id: id }, { departure: departure,arrival:arrival, driver: driver, price: price, seat: seat, date: date, departuretime: departuretime,arrivaltime:arrivaltime, phone: phone,busno:busno,driver_id:driver_id })
         .then(function(re) {
-            console.log(re)
+            console.log(driver_id)
             res.status(200).json({ message: "updated" })
         })
         .catch(function(e) {
@@ -106,15 +107,16 @@ router.delete('/delete/ticket/:id',auth.userVerify,auth.verifyAdmin, function(re
 
   
 //display all tickets
-router.get('/show/tickets', function(req,res)
+router.get('/show/tickets',auth.userVerify ,auth.verifyUserAdmin, function(req,res)
 {
     Ticket.find().then(function(data)
     {
         
-       
+        res.status(200).json({success:true,data })
     })
     .catch(function(e)
     {
+        res.status(500).json({err:e})
     })
 })
 module.exports = router;
