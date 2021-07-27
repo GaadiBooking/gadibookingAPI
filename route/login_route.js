@@ -4,6 +4,8 @@ const Register = require('../model/register_model');
 const { check, validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken')
+const auth=require('../middleware/auth')
+
 
 //register user
 router.post('/user/register',  function (req, res) {
@@ -75,4 +77,24 @@ router.get('/user/:id',function(req,res){
         res.status(500).json({error:e})
     })
 })
+
+
+
+
+// getting all data of user
+router.get("/user/showall", function(req, res) {
+
+    Register.find().then(function(data) {
+        console.log(data)
+        res.status(200).json({ success: true, customer: data })
+        console.log(data)
+    }).catch(function(e) {
+        res.status(500).json({ error: e })
+    })
+})
+
+
+
+
+
 module.exports = router;
