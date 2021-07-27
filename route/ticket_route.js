@@ -77,7 +77,7 @@ router.get("/myticket/:id",auth.userVerify, asyncHandler(async(req,res,next)=>{
     });
   }))
 
-
+//fetches single ticket
   router.get("/getTicket/:id",auth.userVerify, asyncHandler(async(req,res,next)=>{
     const ticket = await Ticket.findById(req.params.id);
     console.log(ticket)
@@ -106,7 +106,7 @@ router.delete('/delete/ticket/:id',auth.userVerify,auth.verifyAdmin, function(re
     })
 
   
-//display all tickets
+//display all tickets for both admin and customers
 router.get('/show/tickets',auth.userVerify ,auth.verifyUserAdmin, function(req,res)
 {
     Ticket.find().then(function(data)

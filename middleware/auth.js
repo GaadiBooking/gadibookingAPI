@@ -41,5 +41,9 @@ module.exports.verifyAdmin=function(req, res, next)
     next();
 }
 
-
+//ticket preview for both cusomer and admin 
+module.exports.verifyUserAdmin=function(req, res, next)
+{
+    
+}
 
