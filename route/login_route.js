@@ -5,6 +5,7 @@ const { check, validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 const auth=require('../middleware/auth')
+const asyncHandler = require("../middleware/async");
 
 
 //register user
@@ -82,17 +83,15 @@ router.get('/user/:id',function(req,res){
 
 
 // getting all data of user
-router.get("/user/showall", function(req, res) {
+router.get('/users/showall',auth.userVerify ,auth.verifyUserAdmin, asyncHandler(async(req,res,next)=>{
 
-    Register.find().then(function(data) {
-        console.log(data)
-        res.status(200).json({ success: true, customer: data })
-        console.log(data)
-    }).catch(function(e) {
-        res.status(500).json({ error: e })
+    const users = await Register.find({});
+  
+    res.status(201).json({
+      success: true,
+      data: users,
     })
-})
-
+}))
 
 
 
