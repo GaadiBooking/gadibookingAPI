@@ -41,3 +41,18 @@ module.exports.verifyAdmin=function(req, res, next)
     next();
 }
 
+//ticket preview for both cusomer and admin 
+module.exports.verifyUserAdmin=function(req, res, next)
+{
+    console.log(req.validUser)
+    if(!req.validUser)
+    {
+        return res.status(401).json({msg: "eta prb"})
+    }
+    else if(req.validUser.role!=="Admin" || req.validUser.role!=="User")
+    {
+        return res.status(401).json({msg: "Unauthorized"})
+    }
+    next();
+}
+
