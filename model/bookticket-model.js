@@ -8,6 +8,9 @@ const Book= mongoose.model('BookTicket',
     },
     ticket:{
         type:{Ticket},
+    },
+    expireIn:{
+        type:Number
     }
 })
 

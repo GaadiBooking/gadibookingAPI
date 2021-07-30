@@ -112,7 +112,7 @@ router.get('/show/tickets',auth.userVerify ,auth.verifyUserAdmin, function(req,r
     Ticket.find().then(function(data)
     {
         
-        res.status(200).json({success:true,data })
+        res.status(200).json({message:"true",data:data })
     })
     .catch(function(e)
     {
