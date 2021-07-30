@@ -107,7 +107,7 @@ router.delete('/delete/ticket/:id',auth.userVerify,auth.verifyAdmin, function(re
 
   
 //display all tickets for both admin and customers
-router.get('/show/tickets',auth.userVerify ,auth.verifyUserAdmin, function(req,res)
+router.get('/show/tickets',auth.userVerify , function(req,res)
 {
     Ticket.find().then(function(data)
     {
