@@ -8,12 +8,14 @@ const ErrorResponse = require("../utils/errorResponse");
 
 //add ticket
 router.post('/book/ticket', asyncHandler(async(req,res,next)=>{
-    const book =await new Book(req.body);
-    book.save().then(function(){
-        res.status(201).json({message:"success",data:book})
-        }).catch(function(e){
-        res.status(500).json({error:e})
-        });
+    const book =await Book.create(req.body);
+    if (!book) {
+        return next(new ErrorResponse("Error booking ticket"), 404);
+      }
+        res.status(200).json({
+            message: "success",
+            data: book,
+          });
 }))
 
 
