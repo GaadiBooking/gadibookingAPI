@@ -30,13 +30,18 @@ describe('for the book ticket route', () => {
 
 
 
-    it('finding the single book ticket detail',()=>{
+it('finding the single book ticket detail',()=>{
         return book.findById({_id :Object('6106a7491829312c582f936a')}).then((pp)=>{
             expect(pp.departure).toEqual('bhaktapur')
             })
     })
 
 
+// the code below is for delete testing
+it('to test the delete booked ticket is working or not', async() => {
+    const status = await book.deleteMany();
+    expect(status.ok).toBe(1);
+});
 
 
 
