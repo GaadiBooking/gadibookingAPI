@@ -47,11 +47,16 @@ it('Login testing using the resgitered detail', () => {
     });
 
 
-it('finding the user detail',()=>{
+it('finding the single user detail',()=>{
     return user.findById({_id :Object('60f934df23d14f0ff40723df')}).then((pp)=>{
         expect(pp.name).toEqual('ken')
         })
 })
+
+
+
+
+
  
 
 
