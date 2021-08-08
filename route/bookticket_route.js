@@ -33,6 +33,9 @@ router.get("/show/bookticket/:id",auth.userVerify, asyncHandler(async(req,res,ne
     });
   }))
 
+
+  //deleting code
+
   router.delete("/remove/booking/:id",auth.userVerify, asyncHandler(async(req,res,next)=>{
 
     const ticket = await Book.findById(req.params.id);
