@@ -6,6 +6,7 @@ const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 const auth=require('../middleware/auth')
 const asyncHandler = require("../middleware/async");
+const upload = require('../middleware/upload');
 
 
 //register user
@@ -34,6 +35,12 @@ router.post('/user/register',  function (req, res) {
         res.status(201).json(errors.array());
     }
 })
+
+
+
+
+
+
 
 //login
 router.post('/user/login', function (req, res) {
@@ -92,6 +99,39 @@ router.get('/users/showall',auth.userVerify ,auth.verifyUserAdmin, asyncHandler(
       data: users,
     })
 }))
+
+
+
+
+
+//updating the profile of user
+router.put('/user/update',upload.single('dp'), function(req, res) {
+    if (req.file == undefined) {
+        return res.status(400).json({
+            message: "Invalid file format"
+        })
+    }
+    const name = req.body.name;
+    const email = req.body.email;
+    const username = req.body.username;
+    const password = req.body.password;
+    const phone = req.body.phone;
+    const dp = req.body.dp;
+    const path    = req.file.path;
+    const id = req.body.id;
+    bcryptjs.hash(password, 10, function (err, hide) {
+        Register.updateOne({ _id: id }, { name: name, email: email, username: username, password: hide, phone: phone,image:path })
+        .then(function(re) {
+            console.log(re)
+            res.status(200).json({ message: "updated profile" })
+        })
+        .catch(function(e) {
+            res.status(500).json({ error: e })
+        })
+    })
+
+   
+})
 
 
 
