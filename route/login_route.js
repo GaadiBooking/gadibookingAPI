@@ -53,7 +53,7 @@ router.post('/user/login', function (req, res) {
                 message: "successfull authentication", 
                 token: token, 
                 role: savedData.role,
-                data: savedData._id })
+                data: savedData })
         })
     })
         .catch(function (e) {
