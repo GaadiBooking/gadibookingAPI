@@ -105,7 +105,7 @@ router.get('/users/showall',auth.userVerify ,auth.verifyUserAdmin, asyncHandler(
 
 
 //updating the profile of user
-router.put('/userq/update', function(req, res) {
+router.put('/userq/update',auth.userVerify, function(req, res) {
    
     const name = req.body.name;
     const email = req.body.email;
@@ -125,7 +125,7 @@ router.put('/userq/update', function(req, res) {
     })
 
     //updating the profile of user
-router.put('/userr/profile/image/:id',upload.single('dp'), function(req, res) {
+router.put('/userr/profile/image/:id',upload.single('dp'),auth.userVerify, function(req, res) {
     console.log(req.file)
     if (req.file == undefined) {
         return res.status(400).json({
