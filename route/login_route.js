@@ -105,22 +105,16 @@ router.get('/users/showall',auth.userVerify ,auth.verifyUserAdmin, asyncHandler(
 
 
 //updating the profile of user
-router.put('/user/update',upload.single('dp'), function(req, res) {
-    if (req.file == undefined) {
-        return res.status(400).json({
-            message: "Invalid file format"
-        })
-    }
+router.put('/userq/update', function(req, res) {
+   
     const name = req.body.name;
     const email = req.body.email;
-    const username = req.body.username;
+    const address=req.body.address;
     const password = req.body.password;
     const phone = req.body.phone;
-    const dp = req.body.dp;
-    const path    = req.file.path;
     const id = req.body.id;
     bcryptjs.hash(password, 10, function (err, hide) {
-        Register.updateOne({ _id: id }, { name: name, email: email, username: username, password: hide, phone: phone,image:path })
+        Register.updateOne({ _id: id }, { name: name, email: email, address: address, password: hide, phone: phone })
         .then(function(re) {
             console.log(re)
             res.status(200).json({ message: "updated profile" })
@@ -129,6 +123,33 @@ router.put('/user/update',upload.single('dp'), function(req, res) {
             res.status(500).json({ error: e })
         })
     })
+
+    //updating the profile of user
+router.put('/userr/profile/image/:id',upload.single('dp'), function(req, res) {
+    console.log(req.file)
+    if (req.file == undefined) {
+        return res.status(400).json({
+            message: "Invalid file format"
+        })
+    }
+    const dp = req.body.dp;
+    const path    = req.file.path;
+    const id = req.params.id;
+    console.log(id)
+    console.log(path)
+
+        // console.log(hash)
+        Register.updateOne({ _id: id }, { dp:path })
+        .then(function(re) {
+            console.log(re)
+            res.status(200).json({ message: "updated Image" })
+        })
+        .catch(function(e) {
+            res.status(500).json({ error: e })
+        })
+
+   
+})
 
    
 })
