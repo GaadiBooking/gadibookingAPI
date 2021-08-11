@@ -72,13 +72,13 @@ router.post('/user/login', function (req, res) {
 
 
 //getting single user data
-router.get('/user/:id',function(req,res){
+router.get('/user/:id',auth.userVerify,function(req,res){
     const userID=req.params.id
     console.log(userID)
 
     const user=Register.findById(userID)
     .then(function(data){
-        res.status(200).json({message:"success",user:data})
+        res.status(200).json({message:"success",data:data})
 
     })
     .catch(function(e){
