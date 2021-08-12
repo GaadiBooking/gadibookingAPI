@@ -113,8 +113,8 @@ router.put('/userq/update',auth.userVerify, function(req, res) {
     const password = req.body.password;
     const phone = req.body.phone;
     const id = req.body.id;
-    bcryptjs.hash(password, 10, function (err, hide) {
-        Register.updateOne({ _id: id }, { name: name, email: email, address: address, password: hide, phone: phone })
+
+        Register.updateOne({ _id: id }, { name: name, email: email, address: address, password: password, phone: phone })
         .then(function(re) {
             console.log(re)
             res.status(200).json({ message: "updated profile" })
@@ -122,7 +122,7 @@ router.put('/userq/update',auth.userVerify, function(req, res) {
         .catch(function(e) {
             res.status(500).json({ error: e })
         })
-    })
+   
 
     //updating the profile of user
 router.put('/userr/profile/image/:id',upload.single('dp'),auth.userVerify, function(req, res) {
