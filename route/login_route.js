@@ -104,7 +104,7 @@ router.get('/users/showall',auth.userVerify ,auth.verifyUserAdmin, asyncHandler(
 
 
 
-//updating the profile of user
+//updating the profile pic of user
 router.put('/userq/update',auth.userVerify, function(req, res) {
    
     const name = req.body.name;
@@ -131,14 +131,11 @@ router.put('/userr/profile/image/:id',upload.single('dp'),auth.userVerify, funct
         return res.status(400).json({
             message: "Invalid file format"
         })
-    }
+    }1
     const dp = req.body.dp;
     const path    = req.file.path;
     const id = req.params.id;
-    console.log(id)
-    console.log(path)
-
-        // console.log(hash)
+    
         Register.updateOne({ _id: id }, { dp:path })
         .then(function(re) {
             console.log(re)
