@@ -6,8 +6,8 @@ const UserDetails= mongoose.model('UserDetails',
     email:{type:String},
     username:{type:String},
     password:{type:String,  require:true},
-    phone:{type:String, default:"Add Contact"},
-    address:{type:String, default:"Update Address"},
+    phone:{type:String},
+    address:{type:String},
     dp:{type:String, default:"no-img.jpg"},
     role:{type:String, enum: ["Admin", "User"], default:"User"}
 })
