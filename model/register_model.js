@@ -9,7 +9,7 @@ const UserDetails= mongoose.model('UserDetails',
     phone:{type:String},
     address:{type:String},
     dp:{type:String, default:"no-img.jpg"},
-    role:{type:String, enum: ["Admin", "User"], default:"User"}
+    role:{type:String, enum: ["Driver", "User"], default:"User"}
 })
 
 module.exports=UserDetails; 

@@ -34,7 +34,7 @@ module.exports.verifyAdmin=function(req, res, next)
     {
         return res.status(401).json({msg: "eta prb"})
     }
-    else if(req.validUser.role!=="Admin")
+    else if(req.validUser.role!=="Driver")
     {
         return res.status(401).json({msg: "Unauthorized"})
     }
@@ -49,7 +49,7 @@ module.exports.verifyUserAdmin=function(req, res, next)
     {
         return res.status(401).json({msg: "eta prb"})
     }
-    else if(req.validUser.role!=="Admin" || req.validUser.role!=="User")
+    else if(req.validUser.role!=="Driver" || req.validUser.role!=="User")
     {
         return res.status(401).json({msg: "Unauthorized"})
     }

@@ -25,7 +25,7 @@ router.post('/add/ticket',auth.userVerify,auth.verifyAdmin,  function (req, res)
             const store = new Ticket({ departure: departure,arrival:arrival, driver: driver, price: price, seat: seat, date: date,driver_id:driver_id, departuretime: departuretime,arrivaltime:arrivaltime, phone: phone,busno:busno});
             store.save().then(function (result) {
                 console.log(price)
-                res.status(200).json({ success: true, message: "Ticket Scheduled Successfully" }) 
+                res.status(200).json({ success: true, message: "Ticket Scheduled Successfully",data:result }) 
             }).catch(function (error) {
                 res.status(500).json({ err: error })
             })
