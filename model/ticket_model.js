@@ -2,10 +2,8 @@ const mongoose=require('mongoose');
 
 const Ticket= mongoose.model('Ticket',
 {
-    departure:{type:String, require:true},
-    arrival:{type:String, require:true},
+    route:{type:String, require:true},
     driver:{type:String},
-    price:{type:String},
     seat:{type:String, default:"32"},
     date:{type:String},
     departuretime:{type:String},

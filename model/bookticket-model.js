@@ -8,6 +8,8 @@ const Book= mongoose.model('BookTicket',
     price:{type:String},
     seat:{type:String},
     date:{type:String},
+    ticketid:{type:String},
+    ticketno:{type:Number},
     userid:{
         type:String
     },

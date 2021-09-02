@@ -11,7 +11,7 @@ router.get("/show/seats/:id",auth.userVerify, asyncHandler(async(req,res,next)=>
     const id=req.params.id
     console.log(id)
     const ticket = await Seat.findOne({busid:id});
-    console.log(ticket)
+    
     
     if (!ticket) {
       return next(new ErrorResponse("No booking"), 404);
@@ -24,7 +24,7 @@ router.get("/show/seats/:id",auth.userVerify, asyncHandler(async(req,res,next)=>
   }))
 
   router.post('/post/seat', asyncHandler(async(req,res,next)=>{
-      console.log("requested")
+      console.log("seat")
     const bseat =await Seat.create(req.body);
     if (!bseat) {
         return next(new ErrorResponse("Error inseting ticket"), 404);
@@ -82,6 +82,21 @@ Seat.updateOne({ busid: id }, { a1:a1, a2:a2 ,a3:a3,a4:a4, a5:a5 ,a6:a6,a7:a7, a
   })
 
 })
+
+
+//delete seat
+router.delete('/delete/seat/:id', function(req, res){
+  const id = req.params.id;
+  Seat.deleteOne({busid:id}).then(function(ticketdel)
+  {
+      res.status(200).json({message:"success"})
+  })
+  .catch(function(err)
+  {
+      res.status(500).json({message:"problem"})
+  })
+  })
+
 
 
   module.exports = router;
