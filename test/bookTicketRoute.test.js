@@ -31,7 +31,7 @@ describe('for the book ticket route', () => {
 
 
 it('finding the single book ticket detail',()=>{
-        return book.findById({_id :Object('6106a7491829312c582f936a')}).then((pp)=>{
+        return book.findById({_id :Object('612f6154539b7340b4953125')}).then((pp)=>{
             expect(pp.departure).toEqual('bhaktapur')
             })
     })

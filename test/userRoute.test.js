@@ -10,8 +10,6 @@ beforeAll(async() => {
 afterAll(async() => {
     await mongoose.connection.close();
 });
-
-
 describe('registering the new user', () => {
     // the code below is for inserting the new customer testing
     it('Insert', () => {
@@ -37,12 +35,12 @@ describe('registering the new user', () => {
 //--------------------------Login Testing-----------------
 it('Login testing using the resgitered detail', () => {
     const login = {
-    'email': 'ken@gmail.com',
+    'username': 'ken',
     'password': 'ken'
     };
     return user.findOne(login)
     .then((pro_ret) => {
-    expect(pro_ret.email).toEqual('ken@gmail.com');
+    expect(pro_ret.username).toEqual('ken');
     });
     });
 

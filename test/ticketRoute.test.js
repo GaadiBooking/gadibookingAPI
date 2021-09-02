@@ -29,15 +29,15 @@ describe('for the ticket route', () => {
 
     //update
     it('to test the update', async() => {
-        return ticket.findOneAndUpdate({ _id: Object('6106a60716d7b545d8092f39') }, { $set: { departure: 'koteshwor' } })
+        return ticket.findOneAndUpdate({ _id: Object('612f5efdb8e24c148883c75a') }, { $set: { departure: 'bhaktapur' } })
             .then((pp) => {
-                expect(pp.departure).toEqual('koteshwor')
+                expect(pp.departure).toEqual('bhaktapur')
             })
 
     });
 
     it('finding the single ticket detail',()=>{
-        return ticket.findById({_id :Object('6106a60716d7b545d8092f39')}).then((pp)=>{
+        return ticket.findById({_id :Object('612f5efdb8e24c148883c75a')}).then((pp)=>{
             expect(pp.departure).toEqual('bhaktapur')
             })
     })

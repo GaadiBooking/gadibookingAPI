@@ -4,7 +4,7 @@
   "description": "gadi booking api",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "start": "node server.js"
   },
   "repository": {
